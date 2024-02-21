@@ -1,13 +1,3 @@
-<!-- <script>
-import { defineComponent } from '@vue/composition-api'
-
-export default defineComponent({
-    setup() {
-
-    },
-})
-</script> -->
-
 <script>
 import axios from "axios";
 
@@ -16,9 +6,10 @@ export default {
     data() {
         return {
             formData: {
-                userId: "",
-                title: "",
-                body: "",
+                login: "",
+                psw: "",
+                phones: "",
+                mes: "",
             },
         };
     },
@@ -38,16 +29,20 @@ export default {
         <br /><br />
         <form @submit.prevent="createPost">
             <div>
-                <label for="userId">User ID: </label>
-                <input type="text" id="userId" v-model="formData.userId" />
+                <label for="login">login</label>
+                <input type="text" id="login" v-model="formData.login" />
             </div>
             <div>
-                <label for="title">title</label>
-                <input type="text" id="title" v-model="formData.title" />
+                <label for="psw">psw</label>
+                <input type="text" id="psw" v-model="formData.psw" />
             </div>
             <div>
-                <label for="body">body</label>
-                <input type="text" id="body" v-model="formData.body" />
+                <label for="phones">phones</label>
+                <input type="text" id="phones" v-model="formData.phones" />
+            </div>
+            <div>
+                <label for="mes">mes</label>
+                <input type="text" id="mes" v-model="formData.mes" />
             </div>
             <br />
             <button>Create</button>

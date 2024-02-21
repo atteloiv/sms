@@ -13,12 +13,22 @@ export default {
             },
         };
     },
+    // methods: {
+    //     createPost() {
+    //         axios
+    //             .post("https://smsc.ru/sys/send.php", this.formData)
+    //             .then((response) => console.log(response))
+    //             .catch((error) => console.log(error));
+    //     },
+    // },
+
     methods: {
-        createPost() {
-            axios
-                .post("https://smsc.ru/sys/send.php", this.formData)
-                .then((response) => console.log(response))
-                .catch((error) => console.log(error));
+        onSubmit: async (form) => {
+            const formData = new FormData(form);
+            const res = await fetch("/api/some-utl", {
+                method: "POST",
+                body: formData,
+            });
         },
     },
 };
@@ -27,7 +37,7 @@ export default {
 <template>
     <div>
         <br /><br />
-        <form @submit.prevent="createPost">
+        <form @submit.prevent="onSubmit">
             <div>
                 <label for="login">login</label>
                 <input type="text" id="login" v-model="formData.login" />
@@ -45,7 +55,7 @@ export default {
                 <input type="text" id="mes" v-model="formData.mes" />
             </div>
             <br />
-            <button>Create</button>
+            <button type="submit">Create</button>
         </form>
     </div>
 </template>

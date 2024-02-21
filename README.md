@@ -1,6 +1,6 @@
 ## Установка
 
-1. Клонируйте репозиторий `https://github.com/atteloiv/laravel-vue.git`
+1. Клонируйте репозиторий `https://github.com/atteloiv/sms.git`
 2. Перейдите в папку склонированного репозитория
 3. Установите composer `composer install`
 4. Создайте новый файл конфигурации на основе .env.example `cp .env.example .env`

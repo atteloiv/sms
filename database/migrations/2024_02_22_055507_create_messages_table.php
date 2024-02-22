@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("phone")->unique();
-            $table->string("email")->unique()->nullable();
-            $table->date("birthday");
+            $table->text("text");
             $table->timestamps();
 
             $table->softDeletes();
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('messages');
     }
 };

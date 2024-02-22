@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -14,8 +15,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-
-        return response()->json();
+        $messages = Message::all();
+        return response()->json($messages);
     }
 
     /**
@@ -26,10 +27,17 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $message = new Message();
+        $message->name = $request->input('name');
+        $message->text = $request->input('text');
+        $message->save();
 
-        return response()->json($data);
-    }
+        return response()->json([
+            'message' => $message
+        ]);
+}
+
+
 
     /**
      * Display the specified resource.

@@ -18,4 +18,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api/some-url', 'MessageController@index');
+Route::post('/message', 'MessageController@store');
+Route::post('/client', 'ClientController@store');
+
+Route::get('/message', 'MessageController@index');
+
+Route::get('/client', 'ClientController@index');
+
+// Route::apiResources([
+//     'client' => ClientController::class,
+// ]);

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use \Datetime;
 
 class ClientController extends Controller
 {
@@ -14,7 +17,29 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::all();
+
+        // function daysUntilBirthday($birthday) {
+        //     $now = new DateTime();
+        //     $birthday = DateTime::createFromFormat('Y-m-d', $birthday);
+        //     $birthday->setDate($now->format('Y'), $birthday->format('m'), $birthday->format('d'));
+
+        //     return $birthday->diff($now)->days;
+        // }
+
+        // $phones = [];
+
+        // foreach ($clients as $client) {
+        //     $daysLeft = daysUntilBirthday($client->birthday);
+
+        //     if ($daysLeft >= 1 && $daysLeft <= 7) {
+        //         $phones[] = $client->phone;
+        //     }
+        // }
+
+        // return $phones;
+        return $clients;
+
     }
 
     /**
@@ -25,7 +50,16 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client();
+        $client->name = $request->input('name');
+        $client->phone = $request->input('phone');
+        $client->email = $request->input('email');
+        $client->birthday = $request->input('birthday');
+        $client->save();
+
+        return response()->json([
+            'message' => $client
+        ]);
     }
 
     /**

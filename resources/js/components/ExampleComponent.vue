@@ -103,6 +103,6 @@ td {
     color: #252733;
 }
 tr:hover {
-    background-color: #ddd;
+    background-color: #f6f8fa;
 }
 </style>

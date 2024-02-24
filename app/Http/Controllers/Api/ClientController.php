@@ -7,6 +7,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use \Datetime;
+use Illuminate\Support\Facades\Http;
 
 class ClientController extends Controller
 {
@@ -38,8 +39,36 @@ class ClientController extends Controller
         // }
 
         // return $phones;
-        return $clients;
+        // return $clients;
 
+
+        // $response = Http::withHeaders([
+        //     'login' => 'Violetta123456',
+        //     'psw' => 'VG9K!6CV-6kK3Jt',
+        //     'phones' => '79519820329',
+        //     'mes' => 'тест1',
+        // ])->post('https://smsc.ru/sys/send.php');
+
+        // if ($response->ok()) {
+        //     $body = $response->json();
+        // }
+
+
+
+        function sendSMS($login, $psw, $phones, $mes) {
+            $url = "https://smsc.ru/sys/send.php?login={$login}&psw={$psw}&phones={$phones}&mes={$mes}";
+            return Http::post($url);
+        }
+
+        $login = "Violetta123456";
+        $psw = "VG9K!6CV-6kK3Jt";
+        $phones1 = ["79519820329","79199528228"];
+        $phones = implode(', ', $phones1);
+        $mes = "тест";
+
+        sendSMS($login, $psw, $phones, $mes);
+
+        // Http::post('https://smsc.ru/sys/send.php?login=Violetta123456&psw=VG9K!6CV-6kK3Jt&phones=79519820329&mes=тест');
     }
 
     /**

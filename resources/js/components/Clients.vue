@@ -45,7 +45,7 @@ export default {
 <template>
     <div>
         <br /><br />
-        <form @submit.prevent="onSubmit">
+        <form @submit="onSubmit">
             <div>
                 <label for="login">Name</label>
                 <input type="text" id="login" v-model="formData.name" />

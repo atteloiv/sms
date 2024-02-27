@@ -19,10 +19,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
-        return $clients;
+        //$clients = Client::all();
+        //return $clients;
 
-        //return now()->format('H:i');
+        return now()->format('H:i');
     }
 
     /**
